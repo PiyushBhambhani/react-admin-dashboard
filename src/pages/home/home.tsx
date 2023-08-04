@@ -1,8 +1,15 @@
 import ChartBox from "../../components/chartBox/ChartBox";
 import TopBox from "../../components/topBox/topBox";
-import { chartBoxConversion, chartBoxProduct, chartBoxUser } from "../../data";
+import {
+  barChartBoxRevenue,
+  barChartBoxVisit,
+  chartBoxConversion,
+  chartBoxProduct,
+  chartBoxUser,
+} from "../../data";
 import "./home.scss";
 import { chartBoxRevenue } from "./../../data";
+import BarChartBox from "../../components/BarChartBox.tsx/BarChartBox";
 
 const Home = () => {
   return (
@@ -24,8 +31,15 @@ const Home = () => {
         <ChartBox {...chartBoxConversion} />
       </div>
       <div className="box box7">Box7</div>
-      <div className="box box8">Box8</div>
-      <div className="box box9">Box9</div>
+      <div className="box box9">
+        {/* <BarChartBox title={""} color={""} datakey={""} chartData={[]} />{" "} */}
+        {/* or */}
+
+        <BarChartBox {...barChartBoxVisit} />
+      </div>
+      <div className="box box8">
+        <BarChartBox {...barChartBoxRevenue} />
+      </div>
     </div>
   );
 };
