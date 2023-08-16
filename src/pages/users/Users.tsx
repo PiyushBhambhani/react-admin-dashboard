@@ -1,4 +1,4 @@
-import { GridColDef, GridValueGetterParams } from "@mui/x-data-grid";
+import { GridColDef } from "@mui/x-data-grid";
 import DataTable from "../../components/dataTable/DataTable";
 import "./users.scss";
 // import { userRows } from "../../data";
@@ -57,7 +57,7 @@ const Users = () => {
   const [open, setOpen] = useState(false);
 
   const { isLoading, data } = useQuery({
-    queryKey: ["repoData"],
+    queryKey: ["allusers"],
     queryFn: () =>
       fetch("http://localhost:8800/api/users").then((res) => res.json()),
   });
