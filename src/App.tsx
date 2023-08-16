@@ -7,6 +7,8 @@ import Menu from "./components/menu/Menu";
 import Footer from "./components/footer/Footer";
 import Login from "./pages/login/login";
 import "./styles/global.scss";
+import User from "./pages/User/User";
+import Product from "./pages/Product/Product";
 function App() {
   const Layout = () => {
     return (
@@ -40,6 +42,14 @@ function App() {
         {
           path: "/products",
           element: <Products />,
+        },
+        {
+          path: "/users/:id",
+          element: <User />,
+        },
+        {
+          path: "/products/:id",
+          element: <Product />,
         },
       ],
     },
