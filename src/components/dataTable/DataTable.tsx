@@ -1,6 +1,7 @@
 import { DataGrid, GridColDef, GridToolbar } from "@mui/x-data-grid";
 import "./dataTable.scss";
 import { Link } from "react-router-dom";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 
 type Props = {
   columns: GridColDef[];
@@ -8,10 +9,27 @@ type Props = {
   slug: string;
 };
 const DataTable = ({ rows, columns, slug }: Props) => {
+  const queryClient = useQueryClient();
+
+  const mutation = useMutation({
+    mutationFn: (id: number) => {
+      return fetch(`http://localhost:8800/api/${slug}/${id}`, {
+        method: "delete",
+      });
+    },
+
+    onSuccess: () => {
+      queryClient.invalidateQueries([`all${slug}`]); //allusers or allproducts
+      //   would refresh whereever allusers is used :) to show
+    },
+  });
+
   const handleDelete = (id: number) => {
     // Delete item
     // axios.delete(`/api/${slack}/${id}`)
-    console.log(id + " has been deleted!");
+    // console.log(id + " has been deleted!");
+
+    mutation.mutate(id);
   };
 
   const actionColumn: GridColDef = {
