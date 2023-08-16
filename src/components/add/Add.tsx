@@ -1,17 +1,48 @@
 import { FormEvent } from "react";
 import "./add.scss";
 import { GridColDef } from "@mui/x-data-grid";
+import { useQueryClient, useMutation } from "@tanstack/react-query";
 
 type Props = {
   slug: string;
   columns: GridColDef[];
   setOpen: React.Dispatch<React.SetStateAction<boolean>>;
 };
+
 export const Add = ({ slug, columns, setOpen }: Props) => {
+  const queryClient = useQueryClient();
+
+  const mutation = useMutation({
+    mutationFn: () => {
+      return fetch(`http://localhost:8800/api/${slug}s`, {
+        method: "post",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          id: 111,
+          img: "",
+          lastName: "Hello",
+          firstName: "Test",
+          email: "testme@gmail.com",
+          phone: "123 456 789",
+          createdAt: "01.02.2023",
+          verified: true,
+        }),
+      });
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries([`all${slug}s`]);
+    },
+  });
+
   const handleSubmit = (event: FormEvent<HTMLFormElement>): void => {
     event.preventDefault();
     // Add item to db n all
-    // axios.post(`/api/${slug}s`)
+
+    mutation.mutate();
+    setOpen(false);
   };
 
   return (
