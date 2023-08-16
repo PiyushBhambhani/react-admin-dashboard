@@ -68,7 +68,7 @@ const BigChartBox = () => {
               bottom: 0,
             }}
           >
-            <CartesianGrid style={{}} />
+            <CartesianGrid strokeDasharray="0 1" style={{}} />
             <XAxis dataKey="name" />
             <YAxis />
             <Tooltip />
