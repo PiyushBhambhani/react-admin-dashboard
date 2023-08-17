@@ -1,7 +1,16 @@
+@import '../../styles/responsive.scss';
+
+// also as the box is wide and has extra gap,
+// im making it verticle in case of small screens
+
 .chartBox {
     display: flex;
     height: 100%;
-    width: 100%;
+
+    @include sm {
+        flex-direction: column;
+
+    }
 
     .boxInfo {
         flex: 3;
@@ -13,6 +22,16 @@
             display: flex;
             align-items: center;
             gap: 10px;
+
+            @include xxl {
+                font-sixze: 14px;
+            }
+        }
+
+        h1 {
+            @include xxl {
+                font-size: 20px;
+            }
         }
 
 
@@ -38,6 +57,10 @@
         .percentage {
             font-weight: bold;
             font-size: 20px;
+
+            @include xxl {
+                font-sixze: 16px;
+            }
         }
 
         .duration {

@@ -1,8 +1,17 @@
+@import "../../styles/responsive.scss";
+// decreasing header fs for xl and lower devices
+
 .pieChartBox {
     height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+
+    h1 {
+        @include xxl {
+            font-style: 24px;
+        }
+    }
 
     .chart {
         display: flex;

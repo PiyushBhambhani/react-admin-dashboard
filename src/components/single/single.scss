@@ -1,5 +1,13 @@
+@import "../../styles/responsive.scss";
+
+// for xl and small making it verticle
+// removing chart for md and lower 
 .single {
     display: flex;
+
+    @include xl {
+        flex-direction: column;
+    }
 
     .view {
         flex: 1;
@@ -47,12 +55,20 @@
             height: 0;
             border: 0.5 solid gray;
             margin: 20px 0px;
+
+            @include md {
+                display: none;
+            }
         }
 
         .chart {
             margin-top: 50px;
             width: 80%;
             height: 400px;
+
+            @include md {
+                display: none;
+            }
         }
     }
 
@@ -90,6 +106,10 @@
                     min-width: 480px;
                     padding: 15px;
                     background-color: #f45b683a;
+
+                    @include md {
+                        min-width: 250px;
+                    }
 
                 }
 

@@ -1,3 +1,6 @@
+@import "../../styles/responsive.scss";
+
+// In case of small devices just hide extra icons and only show notification and user profile
 .navbar {
     width: 100%;
     padding: 20px;
@@ -18,6 +21,12 @@
         display: flex;
         align-items: center;
         gap: 20px;
+
+        .icon {
+            @include sm {
+                display: none;
+            }
+        }
 
         .notification {
             position: relative;

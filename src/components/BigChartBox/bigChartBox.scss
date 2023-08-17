@@ -1,4 +1,14 @@
+@import "../../styles/responsive.scss";
+// decreasing header fs for xl and lower devices
+
 .bigChartBox {
+
+    h1 {
+        @include xxl {
+            font-style: 24px;
+        }
+    }
+
     width: 100%;
     height: 100%;
     display: flex;
